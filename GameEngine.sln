@@ -1,0 +1,40 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 15
+VisualStudioVersion = 15.0.28010.2046
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "Engine", "src\Engine\Engine.vcxproj", "{D8185ECF-85C7-44C3-A3B4-760FA5A47C41}"
+EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "Platformer", "src\Platformer\Platformer.vcxproj", "{CA1CAB02-F170-4C0F-A496-68C1A8DEC3AB}"
+	ProjectSection(ProjectDependencies) = postProject
+		{D8185ECF-85C7-44C3-A3B4-760FA5A47C41} = {D8185ECF-85C7-44C3-A3B4-760FA5A47C41}
+	EndProjectSection
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{2903AD06-86DA-4670-BD7A-B713B96D76A3}"
+	ProjectSection(SolutionItems) = preProject
+		.gitignore = .gitignore
+		LICENSE = LICENSE
+	EndProjectSection
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|x64 = Debug|x64
+		Release|x64 = Release|x64
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{D8185ECF-85C7-44C3-A3B4-760FA5A47C41}.Debug|x64.ActiveCfg = Debug|x64
+		{D8185ECF-85C7-44C3-A3B4-760FA5A47C41}.Debug|x64.Build.0 = Debug|x64
+		{D8185ECF-85C7-44C3-A3B4-760FA5A47C41}.Release|x64.ActiveCfg = Release|x64
+		{D8185ECF-85C7-44C3-A3B4-760FA5A47C41}.Release|x64.Build.0 = Release|x64
+		{CA1CAB02-F170-4C0F-A496-68C1A8DEC3AB}.Debug|x64.ActiveCfg = Debug|x64
+		{CA1CAB02-F170-4C0F-A496-68C1A8DEC3AB}.Debug|x64.Build.0 = Debug|x64
+		{CA1CAB02-F170-4C0F-A496-68C1A8DEC3AB}.Release|x64.ActiveCfg = Release|x64
+		{CA1CAB02-F170-4C0F-A496-68C1A8DEC3AB}.Release|x64.Build.0 = Release|x64
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {B1A0B498-7747-4E9C-A8E5-C3F99C585D34}
+	EndGlobalSection
+EndGlobal
