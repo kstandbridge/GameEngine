@@ -36,4 +36,19 @@ namespace Kengine
 	{
 		return m_isOpen;
 	}
+
+	int Window::GetWidth() const
+	{
+		return m_width;
+	}
+
+	int Window::GetHeight() const
+	{
+		return m_height;
+	}
+
+	sf::RenderWindow* Window::GetRenderWindow()
+	{
+		return &m_window;
+	}
 }

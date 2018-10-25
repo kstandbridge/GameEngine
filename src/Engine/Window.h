@@ -23,6 +23,11 @@ namespace Kengine
 		void HandleEvents();
 
 		bool IsOpen() const;
+
+		int GetWidth() const;
+		int GetHeight() const;
+
+		sf::RenderWindow* GetRenderWindow();
 	};
 
 
