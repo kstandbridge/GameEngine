@@ -5,18 +5,20 @@
 namespace Kengine
 {
 	class BaseState;
+	class EventManager;
 	class Window;
 
 	class StateManager
 	{
 		BaseState* m_currentState {};
+		EventManager* m_eventManager;
 		Window* m_window;
 
 		std::unordered_map<int, std::function<BaseState*(void)>> m_stateFactory;
 		std::unordered_map<int, BaseState*> m_states;
 	public:
 
-		StateManager(Window* window);
+		StateManager(EventManager* eventManager, Window* window);
 		~StateManager();
 
 		template<class T>

@@ -4,14 +4,15 @@
 namespace Kengine
 {
 	class StateManager;
+	class EventManager;
 	class Window;
 	
 	class BaseState
 	{
 		friend class StateManager;
 	public:
-		virtual void OnCreate() = 0;
-		virtual void OnDestroy() = 0;
+		virtual void OnCreate(EventManager* eventManager) = 0;
+		virtual void OnDestroy(EventManager* eventManager) = 0;
 		
 		virtual void Activate() = 0;
 		virtual void Deactivate() = 0;

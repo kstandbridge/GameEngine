@@ -3,6 +3,9 @@
 
 namespace Kengine
 {
+
+	class EventManager;
+
 	class Window
 	{
 		int m_width;
@@ -12,15 +15,20 @@ namespace Kengine
 
 		bool m_isOpen;
 
+		EventManager* m_eventManager;
+
 	public:
-		Window(
+		Window(EventManager* eventManager);
+
+		~Window();
+
+		void Init(
 			const std::string& title, 
 			const unsigned int width, 
 			const unsigned int height, 
 			const unsigned int depth = 32);
-		~Window();
 
-		void HandleEvents();
+		void Update();
 
 		bool IsOpen() const;
 

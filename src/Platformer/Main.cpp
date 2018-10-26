@@ -1,22 +1,27 @@
 #include "Engine/Window.h"
 #include "Engine/StateManager.h"
+#include "Engine/EventManager.h"
+
 #include "DebugMenu_State.h"
 
-#include <iostream>
+
 
 int main(int argc, char* argv[])
 {
-	Kengine::Window window("Platform Game", 640, 480);
+	Kengine::EventManager eventManager("Resources/keys.cfg");
 
-	Kengine::StateManager stateManager(&window);
+	Kengine::Window window(&eventManager);
+	window.Init("Platform Game", 640, 480);
+
+	Kengine::StateManager stateManager(&eventManager, &window);
 	stateManager.RegisterState<DebugMenu_State>(1);
-	stateManager.SwitchTo(2);
+	stateManager.SwitchTo(1);
 
 	while(window.IsOpen())
 	{
 		window.GetRenderWindow()->clear(sf::Color(64, 0, 64, 255));
 
-		window.HandleEvents();
+		window.Update();
 
 		stateManager.Draw();
 

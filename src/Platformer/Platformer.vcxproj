@@ -80,6 +80,9 @@
   <ItemGroup>
     <ClInclude Include="DebugMenu_State.h" />
   </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\keys.cfg" />
+  </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
   </ImportGroup>
