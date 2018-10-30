@@ -4,18 +4,16 @@
 
 #include "DebugMenu_State.h"
 
-
-
 int main(int argc, char* argv[])
 {
-	Kengine::EventManager eventManager("Resources/keys.cfg");
+	Kengine::EventManager<GameState> eventManager("Resources/keys.cfg");
 
-	Kengine::Window window(&eventManager);
+	Kengine::Window<GameState> window(&eventManager);
 	window.Init("Platform Game", 640, 480);
 
-	Kengine::StateManager stateManager(&eventManager, &window);
-	stateManager.RegisterState<DebugMenu_State>(1);
-	stateManager.SwitchTo(1);
+	Kengine::StateManager<GameState> stateManager(&eventManager, &window);
+	stateManager.RegisterState<DebugMenu_State>(GameState::DEBUG_MENU);
+	stateManager.SwitchTo(GameState::DEBUG_MENU);
 
 	while(window.IsOpen())
 	{

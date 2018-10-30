@@ -92,14 +92,13 @@ namespace Kengine
 
 	using CallbackContainer = std::unordered_map<std::string, std::function<void(EventDetails*)>>;
 
+	template<typename ID>
 	class EventManager
 	{
-		friend class StateManager; // TODO Should I just at a SetState call instead?
-
 		std::unordered_map<std::string, Binding*> m_bindings;
-		std::unordered_map<int, CallbackContainer> m_callbacks;
+		std::unordered_map<ID, CallbackContainer> m_callbacks;
 
-		int m_currentState;
+		ID m_currentState;
 
 		bool AddBinding(Binding* binding)
 		{
@@ -110,7 +109,7 @@ namespace Kengine
 	public:
 
 		EventManager(const std::string& configPath)
-			: m_currentState(0)
+			: m_currentState(ID(0))
 		{
 			LoadBindings(configPath);
 		}
@@ -122,6 +121,11 @@ namespace Kengine
 				delete itr.second;
 				itr.second = nullptr;
 			}
+		}
+
+		void SetCurrentState(ID state)
+		{
+			m_currentState = state;
 		}
 
 		void LoadBindings(const std::string& configPath)
@@ -147,8 +151,8 @@ namespace Kengine
 				{
 					std::string keyVal;
 					keystream >> keyVal;
-					int start = 0;
-					int end = keyVal.find(delimiter);
+					size_t start = 0;
+					size_t end = keyVal.find(delimiter);
 					if (end == std::string::npos)
 					{
 						delete bind;
@@ -172,16 +176,16 @@ namespace Kengine
 		}
 
 		template<class T>
-		bool AddCallback(int state, std::string name, void(T::*func)(EventDetails*), T* instance)
+		bool AddCallback(ID id, std::string name, void(T::*func)(EventDetails*), T* instance)
 		{
-			auto it = m_callbacks.emplace(state, CallbackContainer()).first;
+			auto it = m_callbacks.emplace(id, CallbackContainer()).first;
 			auto temp = std::bind(func, instance, std::placeholders::_1);
 			return it->second.emplace(name, temp).second;
 		}
 
-		bool RemoveCallback(int state, const std::string& name)
+		bool RemoveCallback(ID id, const std::string& name)
 		{
-			auto statePair = m_callbacks.find(state);
+			auto statePair = m_callbacks.find(id);
 			if (statePair == m_callbacks.end()) return false;
 			const auto callbackPair = statePair->second.find(name);
 			if (callbackPair == statePair->second.end()) return false;
@@ -281,7 +285,7 @@ namespace Kengine
 				if (binding->m_events.size() == binding->c)
 				{
 					auto stateCallBacks = m_callbacks.find(m_currentState);
-					auto otherCallbacks = m_callbacks.find(0);
+					auto otherCallbacks = m_callbacks.find(ID(0));
 
 					if (stateCallBacks != m_callbacks.end())
 					{

@@ -19,17 +19,23 @@ EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|x64 = Debug|x64
+		Debug|x86 = Debug|x86
 		Release|x64 = Release|x64
+		Release|x86 = Release|x86
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
 		{D8185ECF-85C7-44C3-A3B4-760FA5A47C41}.Debug|x64.ActiveCfg = Debug|x64
 		{D8185ECF-85C7-44C3-A3B4-760FA5A47C41}.Debug|x64.Build.0 = Debug|x64
+		{D8185ECF-85C7-44C3-A3B4-760FA5A47C41}.Debug|x86.ActiveCfg = Debug|x64
 		{D8185ECF-85C7-44C3-A3B4-760FA5A47C41}.Release|x64.ActiveCfg = Release|x64
 		{D8185ECF-85C7-44C3-A3B4-760FA5A47C41}.Release|x64.Build.0 = Release|x64
+		{D8185ECF-85C7-44C3-A3B4-760FA5A47C41}.Release|x86.ActiveCfg = Release|x64
 		{CA1CAB02-F170-4C0F-A496-68C1A8DEC3AB}.Debug|x64.ActiveCfg = Debug|x64
 		{CA1CAB02-F170-4C0F-A496-68C1A8DEC3AB}.Debug|x64.Build.0 = Debug|x64
+		{CA1CAB02-F170-4C0F-A496-68C1A8DEC3AB}.Debug|x86.ActiveCfg = Debug|x64
 		{CA1CAB02-F170-4C0F-A496-68C1A8DEC3AB}.Release|x64.ActiveCfg = Release|x64
 		{CA1CAB02-F170-4C0F-A496-68C1A8DEC3AB}.Release|x64.Build.0 = Release|x64
+		{CA1CAB02-F170-4C0F-A496-68C1A8DEC3AB}.Release|x86.ActiveCfg = Release|x64
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
