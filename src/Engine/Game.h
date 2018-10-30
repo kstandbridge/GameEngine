@@ -1,6 +1,7 @@
 #pragma once
 #include "EventManager.h"
 #include "StateManager.h"
+#include "FontManager.h"
 #include "TextureManager.h"
 #include "Window.h"
 
@@ -11,6 +12,7 @@ namespace Kengine
 	{
 		sf::Clock m_clock;
 		sf::Time m_deltaTime;
+		FontManager* m_fontManager;
 		TextureManager* m_textureManager;
 		EventManager<ID>* m_eventManager;
 		Window<ID>* m_window;
@@ -18,10 +20,15 @@ namespace Kengine
 	public:
 		Game()
 		{
+			m_fontManager = new FontManager("Resources/fonts.cfg");
 			m_textureManager = new TextureManager("Resources/textures.cfg");
 			m_eventManager = new EventManager<ID>("Resources/keys.cfg");
 			m_window = new Window<ID>(m_eventManager);
-			m_stateManager = new StateManager<ID>(m_textureManager, m_eventManager, m_window);
+			m_stateManager = new StateManager<ID>(
+				m_fontManager,
+				m_textureManager, 
+				m_eventManager,
+				m_window);
 		}
 
 		~Game()
@@ -30,6 +37,7 @@ namespace Kengine
 			delete m_window;
 			delete m_eventManager;
 			delete m_textureManager;
+			delete m_fontManager;
 		}
 
 		bool IsRunning()

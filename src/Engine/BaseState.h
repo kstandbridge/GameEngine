@@ -12,6 +12,7 @@ namespace Kengine
 	template<typename ID>
 	class Window;
 
+	class FontManager;
 	class TextureManager;
 
 	template<typename ID>
@@ -35,11 +36,19 @@ namespace Kengine
 		}
 
 	protected:
-		BaseState(TextureManager* textureManager, StateManager<ID>* stateManager, Window<ID>* window)
-			: m_textureManager(textureManager), m_stateManager(stateManager), m_window(window)
+		BaseState(
+			FontManager* fontManager, 
+			TextureManager* textureManager, 
+			StateManager<ID>* stateManager, 
+			Window<ID>* window)
+			: m_fontManager(fontManager),
+			  m_textureManager(textureManager), 
+			  m_stateManager(stateManager), 
+			  m_window(window)
 		{
 		}
 
+		FontManager* m_fontManager;
 		TextureManager* m_textureManager;
 		StateManager<ID>* m_stateManager;
 		Window<ID>* m_window;

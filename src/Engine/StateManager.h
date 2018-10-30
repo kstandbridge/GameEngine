@@ -13,11 +13,13 @@ namespace Kengine
 	template<typename ID>
 	class Window;
 
+	class FontManager;
 	class TextureManager;
 
 	template<typename ID>
 	class StateManager
 	{
+		FontManager* m_fontManager;
 		TextureManager* m_textureManager;
 		BaseState<ID>* m_currentState{};
 		EventManager<ID>* m_eventManager;
@@ -28,10 +30,14 @@ namespace Kengine
 	public:
 
 		StateManager(
+			FontManager* fontManager,
 			TextureManager* textureManager,
 			EventManager<ID>* eventManager, 
 			Window<ID>* window)
-			: m_textureManager(textureManager), m_eventManager(eventManager), m_window(window)
+			: m_fontManager(fontManager),
+			  m_textureManager(textureManager), 
+			  m_eventManager(eventManager), 
+			  m_window(window)
 		{
 		}
 
@@ -49,7 +55,11 @@ namespace Kengine
 		{
 			m_stateFactory[id] = [this]() -> BaseState<ID>*
 			{
-				return new T(m_textureManager, this, m_window);
+				return new T(
+					m_fontManager,
+					m_textureManager, 
+					this, 
+					m_window);
 			};
 		}
 

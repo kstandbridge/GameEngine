@@ -1,22 +1,13 @@
 #include "DebugMenu_State.h"
 #include "Engine/Window.h"
 #include "Engine/StateManager.h"
-
-DebugMenu_State::DebugMenu_State(
-	Kengine::TextureManager* textureManager,
-	Kengine::StateManager<GameState>* stateManager,
-	Kengine::Window<GameState>* window)
-	: BaseState(textureManager, stateManager, window)
-{
-}
+#include "Engine/FontManager.h"
 
 void DebugMenu_State::OnCreate(Kengine::EventManager<GameState>* eventManager)
 {
-	if (!m_font.loadFromFile("Resources/arial.ttf")) throw std::exception("Unable to load font media/arial.ttf");
-
+	m_fontManager->RequireResource("arial");
 	m_buttonSize = sf::Vector2f(300.0f, 32.0f);
 	m_buttonPos = sf::Vector2f(m_window->GetSize().x / 2.0f, m_window->GetSize().y / 2.0f - (BUTTON_COUNT * m_buttonSize.y / 2.0f));
-	m_buttonPadding = 10;
 
 	std::string str[3];
 	str[0] = "Launch Game";
@@ -32,7 +23,7 @@ void DebugMenu_State::OnCreate(Kengine::EventManager<GameState>* eventManager)
 			m_buttonPos.y + (i * m_buttonSize.y) + (m_buttonPadding * i));
 		m_rects[i].setFillColor({ 255, 0, 0, 255 });
 
-		m_labels[i].setFont(m_font);
+		m_labels[i].setFont(*m_fontManager->GetResource("arial"));
 		m_labels[i].setCharacterSize(12);
 		m_labels[i].setString(str[i]);
 		const auto rect = m_labels[i].getLocalBounds();
@@ -48,6 +39,7 @@ void DebugMenu_State::OnCreate(Kengine::EventManager<GameState>* eventManager)
 
 void DebugMenu_State::OnDestroy(Kengine::EventManager<GameState>* eventManager)
 {
+	m_fontManager->ReleaseResource("arial");
 	eventManager->RemoveCallback(GameState::DEBUG_MENU, "Key_Escape");
 	eventManager->RemoveCallback(GameState::DEBUG_MENU, "Mouse_Left");
 }

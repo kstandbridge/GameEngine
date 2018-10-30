@@ -84,6 +84,7 @@
     <ClInclude Include="State_Intro.h" />
   </ItemGroup>
   <ItemGroup>
+    <None Include="Resources\fonts.cfg" />
     <None Include="Resources\keys.cfg" />
     <None Include="Resources\textures.cfg" />
   </ItemGroup>

@@ -39,6 +39,7 @@
   <ItemGroup>
     <None Include="Resources\keys.cfg" />
     <None Include="Resources\textures.cfg" />
+    <None Include="Resources\fonts.cfg" />
   </ItemGroup>
   <ItemGroup>
     <Font Include="Resources\arial.ttf" />

@@ -1,16 +1,8 @@
 #include "State_Intro.h"
 
 #include "Engine/Window.h"
+#include "Engine/FontManager.h"
 #include "Engine/TextureManager.h"
-
-
-State_Intro::State_Intro(
-	Kengine::TextureManager* textureManager, 
-	Kengine::StateManager<GameState>* stateManager, 
-	Kengine::Window<GameState>* window)
-	: BaseState<GameState>(textureManager, stateManager, window), m_timePassed(0)
-{
-}
 
 void State_Intro::OnCreate(Kengine::EventManager<GameState>* eventManager)
 {
@@ -24,8 +16,8 @@ void State_Intro::OnCreate(Kengine::EventManager<GameState>* eventManager)
 	m_sprite.setOrigin(size.x / 2.0f, size.y / 2.0f);
 	eventManager->AddCallback(GameState::TITLE, "Intro_Continue", &State_Intro::Continue, this);
 
-	if (!m_font.loadFromFile("Resources/arial.ttf")) throw std::exception("Unable to load font media/arial.ttf");
-	m_text.setFont(m_font);
+	m_fontManager->RequireResource("arial");
+	m_text.setFont(*m_fontManager->GetResource("arial"));
 	m_text.setCharacterSize(15);
 	m_text.setString("Press space to continue...");
 	const auto rect = m_text.getLocalBounds();
@@ -39,6 +31,7 @@ void State_Intro::OnCreate(Kengine::EventManager<GameState>* eventManager)
 
 void State_Intro::OnDestroy(Kengine::EventManager<GameState>* eventManager)
 {
+	m_fontManager->ReleaseResource("arial");
 	m_textureManager->ReleaseResource("Intro");
 	eventManager->RemoveCallback(GameState::TITLE, "Into_Continue");
 }
