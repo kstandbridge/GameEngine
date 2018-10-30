@@ -1,6 +1,7 @@
 #pragma once
 #include <unordered_map>
 #include <functional>
+#include "Platformer/GameState.h"
 
 namespace Kengine
 {
@@ -73,6 +74,25 @@ namespace Kengine
 		void Draw()
 		{
 			m_currentState->Draw();
+		}
+
+		void Update(const sf::Time time)
+		{
+			m_currentState->Update(time);
+		}
+
+		void RemoveState(ID id)
+		{
+			for (auto it = m_states.begin(); it != m_states.end(); ++it)
+			{
+				if (it->first == id)
+				{
+					it->second->OnDestroy(m_eventManager);
+					delete it->second;
+					m_states.erase(it);
+					return;
+				}
+			}
 		}
 	};
 

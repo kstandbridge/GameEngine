@@ -10,8 +10,6 @@ namespace Kengine
 	template<typename ID>
 	class Window
 	{
-		int m_width;
-		int m_height;
 		int m_depth;
 		sf::RenderWindow m_window;
 
@@ -30,14 +28,17 @@ namespace Kengine
 			m_window.close();
 		}
 
+		void Close()
+		{
+			m_isOpen = false;
+		}
+
 		void Init(
 			const std::string& title,
 			const unsigned int width,
 			const unsigned int height,
 			const unsigned int depth = 32)
 		{
-			m_width = width;
-			m_height = height;
 			m_depth = depth;
 			m_isOpen = true;
 			m_window.create({ width, height, depth }, title);
@@ -62,16 +63,11 @@ namespace Kengine
 			return m_isOpen;
 		}
 
-		int GetWidth() const
+		sf::Vector2u GetSize() const
 		{
-			return m_width;
+			return m_window.getSize();
 		}
-
-		int GetHeight() const
-		{
-			return m_height;
-		}
-
+		
 		sf::RenderWindow* GetRenderWindow()
 		{
 			return &m_window;
