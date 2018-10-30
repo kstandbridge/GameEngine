@@ -1,9 +1,9 @@
-#include "DebugMenu_State.h"
+#include "State_DebugMenu.h"
 #include "Engine/Window.h"
 #include "Engine/StateManager.h"
 #include "Engine/FontManager.h"
 
-void DebugMenu_State::OnCreate(Kengine::EventManager<GameState>* eventManager)
+void State_DebugMenu::OnCreate(Kengine::EventManager<GameState>* eventManager)
 {
 	m_fontManager->RequireResource("arial");
 	m_buttonSize = sf::Vector2f(300.0f, 32.0f);
@@ -33,31 +33,31 @@ void DebugMenu_State::OnCreate(Kengine::EventManager<GameState>* eventManager)
 		m_labels[i].setPosition(m_rects[i].getPosition());
 	}
 
-	eventManager->AddCallback(GameState::DEBUG_MENU, "Key_Escape", &DebugMenu_State::Escape, this);
-	eventManager->AddCallback(GameState::DEBUG_MENU, "Mouse_Left", &DebugMenu_State::MouseClick, this);
+	eventManager->AddCallback(GameState::DEBUG_MENU, "Key_Escape", &State_DebugMenu::Escape, this);
+	eventManager->AddCallback(GameState::DEBUG_MENU, "Mouse_Left", &State_DebugMenu::MouseClick, this);
 }
 
-void DebugMenu_State::OnDestroy(Kengine::EventManager<GameState>* eventManager)
+void State_DebugMenu::OnDestroy(Kengine::EventManager<GameState>* eventManager)
 {
 	m_fontManager->ReleaseResource("arial");
 	eventManager->RemoveCallback(GameState::DEBUG_MENU, "Key_Escape");
 	eventManager->RemoveCallback(GameState::DEBUG_MENU, "Mouse_Left");
 }
 
-void DebugMenu_State::Activate()
+void State_DebugMenu::Activate()
 {
 }
 
-void DebugMenu_State::Deactivate()
+void State_DebugMenu::Deactivate()
 {
 }
 
-void DebugMenu_State::Update(const sf::Time& time)
+void State_DebugMenu::Update(const sf::Time& time)
 {
 
 }
 
-void DebugMenu_State::Draw()
+void State_DebugMenu::Draw()
 {
 	for (int i = 0; i < BUTTON_COUNT; i++)
 	{
@@ -66,12 +66,12 @@ void DebugMenu_State::Draw()
 	}
 }
 
-void DebugMenu_State::Escape(Kengine::EventDetails* eventDetails)
+void State_DebugMenu::Escape(Kengine::EventDetails* eventDetails)
 {
 	m_window->Close();
 }
 
-void DebugMenu_State::MouseClick(Kengine::EventDetails* eventDetails)
+void State_DebugMenu::MouseClick(Kengine::EventDetails* eventDetails)
 {
 	const auto mousePos = eventDetails->m_mouse;
 

@@ -5,7 +5,7 @@
 
 #include "GameState.h"
 
-class DebugMenu_State : public Kengine::BaseState<GameState>
+class State_DebugMenu : public Kengine::BaseState<GameState>
 {
 	const static size_t BUTTON_COUNT = 3;
 
@@ -16,7 +16,7 @@ class DebugMenu_State : public Kengine::BaseState<GameState>
 	sf::Vector2f m_buttonPos;
 	size_t m_buttonPadding;
 public:
-	DebugMenu_State(
+	State_DebugMenu(
 		Kengine::FontManager* fontManager,
 		Kengine::TextureManager* textureManager,
 		Kengine::StateManager<GameState>* stateManager,
