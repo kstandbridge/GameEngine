@@ -12,6 +12,8 @@ namespace Kengine
 	template<typename ID>
 	class Window;
 
+	class TextureManager;
+
 	template<typename ID>
 	class BaseState
 	{
@@ -33,11 +35,12 @@ namespace Kengine
 		}
 
 	protected:
-		BaseState(StateManager<ID>* stateManager, Window<ID>* window)
-			: m_stateManager(stateManager), m_window(window)
+		BaseState(TextureManager* textureManager, StateManager<ID>* stateManager, Window<ID>* window)
+			: m_textureManager(textureManager), m_stateManager(stateManager), m_window(window)
 		{
 		}
 
+		TextureManager* m_textureManager;
 		StateManager<ID>* m_stateManager;
 		Window<ID>* m_window;
 		sf::View m_view;

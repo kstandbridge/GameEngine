@@ -8,7 +8,6 @@
 
 class State_Intro : public Kengine::BaseState<GameState>
 {
-	sf::Texture m_texture;
 	sf::Sprite m_sprite;
 
 	sf::Font m_font;
@@ -19,7 +18,7 @@ class State_Intro : public Kengine::BaseState<GameState>
 	const float ANIMATION_TIME = 3.0f;
 
 public:
-	State_Intro(Kengine::StateManager<GameState>* stateManager, Kengine::Window<GameState>* window);
+	State_Intro(Kengine::TextureManager* textureManager, Kengine::StateManager<GameState>* stateManager, Kengine::Window<GameState>* window);
 
 	void OnCreate(Kengine::EventManager<GameState>* eventManager) override;
 	void OnDestroy(Kengine::EventManager<GameState>* eventManager) override;

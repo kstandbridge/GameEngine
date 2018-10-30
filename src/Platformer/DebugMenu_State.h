@@ -19,7 +19,7 @@ class DebugMenu_State : public Kengine::BaseState<GameState>
 	sf::Vector2f m_buttonPos;
 	size_t m_buttonPadding;
 public:
-	DebugMenu_State(Kengine::StateManager<GameState>* stateManager, Kengine::Window<GameState>* window);
+	DebugMenu_State(Kengine::TextureManager* textureManager, Kengine::StateManager<GameState>* stateManager, Kengine::Window<GameState>* window);
 
 	void OnCreate(Kengine::EventManager<GameState>* eventManager) override;
 	void OnDestroy(Kengine::EventManager<GameState>* eventManager) override;

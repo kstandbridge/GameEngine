@@ -13,9 +13,12 @@ namespace Kengine
 	template<typename ID>
 	class Window;
 
+	class TextureManager;
+
 	template<typename ID>
 	class StateManager
 	{
+		TextureManager* m_textureManager;
 		BaseState<ID>* m_currentState{};
 		EventManager<ID>* m_eventManager;
 		Window<ID>* m_window;
@@ -24,8 +27,11 @@ namespace Kengine
 		std::unordered_map<ID, BaseState<ID>*> m_states;
 	public:
 
-		StateManager(EventManager<ID>* eventManager, Window<ID>* window)
-			: m_eventManager(eventManager), m_window(window)
+		StateManager(
+			TextureManager* textureManager,
+			EventManager<ID>* eventManager, 
+			Window<ID>* window)
+			: m_textureManager(textureManager), m_eventManager(eventManager), m_window(window)
 		{
 		}
 
@@ -43,7 +49,7 @@ namespace Kengine
 		{
 			m_stateFactory[id] = [this]() -> BaseState<ID>*
 			{
-				return new T(this, m_window);
+				return new T(m_textureManager, this, m_window);
 			};
 		}
 

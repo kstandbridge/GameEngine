@@ -3,9 +3,10 @@
 #include "Engine/StateManager.h"
 
 DebugMenu_State::DebugMenu_State(
+	Kengine::TextureManager* textureManager,
 	Kengine::StateManager<GameState>* stateManager,
 	Kengine::Window<GameState>* window)
-	: BaseState(stateManager, window)
+	: BaseState(textureManager, stateManager, window)
 {
 }
 
