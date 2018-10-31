@@ -76,11 +76,13 @@
   <ItemGroup>
     <ClCompile Include="Main.cpp" />
     <ClCompile Include="State_DebugMenu.cpp" />
+    <ClCompile Include="State_Game.cpp" />
     <ClCompile Include="State_Intro.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="GameState.h" />
     <ClInclude Include="State_DebugMenu.h" />
+    <ClInclude Include="State_Game.h" />
     <ClInclude Include="State_Intro.h" />
   </ItemGroup>
   <ItemGroup>
@@ -93,6 +95,7 @@
   </ItemGroup>
   <ItemGroup>
     <Image Include="Resources\intro.png" />
+    <Image Include="Resources\Mushroom.png" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

@@ -24,6 +24,9 @@
     <ClCompile Include="State_DebugMenu.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="State_Game.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="GameState.h">
@@ -33,6 +36,9 @@
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="State_DebugMenu.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="State_Game.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>
@@ -46,6 +52,9 @@
   </ItemGroup>
   <ItemGroup>
     <Image Include="Resources\intro.png">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="Resources\Mushroom.png">
       <Filter>Resource Files</Filter>
     </Image>
   </ItemGroup>

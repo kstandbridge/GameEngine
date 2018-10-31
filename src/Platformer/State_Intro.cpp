@@ -3,6 +3,7 @@
 #include "Engine/Window.h"
 #include "Engine/FontManager.h"
 #include "Engine/TextureManager.h"
+#include "Engine/StateManager.h"
 
 void State_Intro::OnCreate(Kengine::EventManager<GameState>* eventManager)
 {
@@ -69,6 +70,7 @@ void State_Intro::Continue(Kengine::EventDetails* eventDetails)
 {
 	if (m_timePassed > ANIMATION_TIME)
 	{
-		m_window->Close();
+		m_stateManager->SwitchTo(GameState::GAME);
+		m_stateManager->RemoveState(GameState::TITLE);
 	}
 }
