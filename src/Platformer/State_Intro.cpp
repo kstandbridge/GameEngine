@@ -71,6 +71,6 @@ void State_Intro::Continue(Kengine::EventDetails* eventDetails)
 	if (m_timePassed > ANIMATION_TIME)
 	{
 		m_stateManager->SwitchTo(GameState::GAME);
-		m_stateManager->RemoveState(GameState::TITLE);
+		m_stateManager->Remove(GameState::TITLE);
 	}
 }

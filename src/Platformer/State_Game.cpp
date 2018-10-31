@@ -57,5 +57,5 @@ void State_Game::Draw()
 
 void State_Game::Pause(Kengine::EventDetails* eventDetails)
 {
-	std::cout << "Enter paused mode..." << std::endl;
+	m_stateManager->SwitchTo(GameState::PAUSED);
 }

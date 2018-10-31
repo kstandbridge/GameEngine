@@ -88,7 +88,7 @@ void State_DebugMenu::MouseClick(Kengine::EventDetails* eventDetails)
 			{
 			case 0:
 				m_stateManager->SwitchTo(GameState::TITLE);
-				m_stateManager->RemoveState(GameState::DEBUG_MENU);
+				m_stateManager->Remove(GameState::DEBUG_MENU);
 				break;
 			case 1:
 				std::cout << "Do something for one" << std::endl;

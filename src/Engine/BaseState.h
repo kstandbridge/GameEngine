@@ -35,6 +35,12 @@ namespace Kengine
 			m_view = view;
 		}
 
+		void SetTransparent(const bool transparent) { m_transparent = transparent; }
+		bool IsTransparent() const { return m_transparent; }
+
+		void SetTranscendent(const bool transcendent) { m_transcendent = transcendent; }
+		bool IsTranscendent() const { return m_transcendent; }
+
 	protected:
 		BaseState(
 			FontManager* fontManager, 
@@ -53,6 +59,9 @@ namespace Kengine
 		StateManager<ID>* m_stateManager;
 		Window<ID>* m_window;
 		sf::View m_view;
+
+		bool m_transparent;
+		bool m_transcendent;
 	};
 	
 }
