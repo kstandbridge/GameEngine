@@ -1,28 +1,26 @@
 #pragma once
-
 #include "Engine/BaseState.h"
-#include "Engine/EventManager.h"
+#include "Engine/Sprite/SpriteSheet.h"
 
 #include "GameState.h"
 
-class State_DebugMenu : public Kengine::BaseState<GameState>
+
+namespace Kengine {
+	struct EventDetails;
+}
+
+class State_SpriteEditor : public Kengine::BaseState<GameState>
 {
-	const static size_t BUTTON_COUNT = 5;
+	Kengine::SpriteSheet m_spriteSheet;
 
-	sf::RectangleShape m_rects[BUTTON_COUNT];
-	sf::Text m_labels[BUTTON_COUNT];
-
-	sf::Vector2f m_buttonSize;
-	sf::Vector2f m_buttonPos;
-	size_t m_buttonPadding;
 public:
-	State_DebugMenu(
+	State_SpriteEditor(
 		Kengine::FontManager* fontManager,
 		Kengine::TextureManager* textureManager,
 		Kengine::StateManager<GameState>* stateManager,
 		Kengine::Window<GameState>* window)
-		: BaseState(fontManager, textureManager, stateManager, window), 
-		  m_buttonPadding(10)
+		: BaseState(fontManager, textureManager, stateManager, window),
+		  m_spriteSheet(textureManager)
 	{
 	}
 
@@ -33,9 +31,8 @@ public:
 	void Update(const sf::Time& time) override;
 	void Draw() override;
 
-	void Escape(Kengine::EventDetails* eventDetails);
-	void MouseClick(Kengine::EventDetails* eventDetails);
-
-
+	void MoveLeft(Kengine::EventDetails* eventDetails);
+	void MoveRight(Kengine::EventDetails* eventDetails);
+	void Attack(Kengine::EventDetails* eventDetails);
+	void Jump(Kengine::EventDetails* eventDetails);
 };
-

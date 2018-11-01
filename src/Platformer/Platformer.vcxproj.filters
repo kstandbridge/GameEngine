@@ -33,6 +33,9 @@
     <ClCompile Include="State_Inventory.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="State_SpriteEditor.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="GameState.h">
@@ -53,11 +56,15 @@
     <ClInclude Include="State_Inventory.h">
       <Filter>Header Files</Filter>
     </ClInclude>
+    <ClInclude Include="State_SpriteEditor.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <None Include="Resources\keys.cfg" />
     <None Include="Resources\textures.cfg" />
     <None Include="Resources\fonts.cfg" />
+    <None Include="Resources\SpriteSheets\Player.sheet" />
   </ItemGroup>
   <ItemGroup>
     <Font Include="Resources\arial.ttf" />
@@ -67,6 +74,9 @@
       <Filter>Resource Files</Filter>
     </Image>
     <Image Include="Resources\Mushroom.png">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="Resources\PlayerSheet.png">
       <Filter>Resource Files</Filter>
     </Image>
   </ItemGroup>

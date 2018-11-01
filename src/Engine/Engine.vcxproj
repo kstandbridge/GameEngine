@@ -82,6 +82,9 @@
     </PostBuildEvent>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClInclude Include="Sprite\AnimationDirectional.h" />
+    <ClInclude Include="Sprite\SpriteSheet.h" />
+    <ClInclude Include="Sprite\AnimationBase.h" />
     <ClInclude Include="BaseState.h" />
     <ClInclude Include="EventManager.h" />
     <ClInclude Include="FontManager.h" />
@@ -90,6 +93,11 @@
     <ClInclude Include="StateManager.h" />
     <ClInclude Include="TextureManager.h" />
     <ClInclude Include="Window.h" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="Sprite\AnimationDirectional.cpp" />
+    <ClCompile Include="Sprite\SpriteSheet.cpp" />
+    <ClCompile Include="Sprite\AnimationBase.cpp" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

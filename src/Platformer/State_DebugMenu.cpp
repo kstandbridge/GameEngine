@@ -9,10 +9,12 @@ void State_DebugMenu::OnCreate(Kengine::EventManager<GameState>* eventManager)
 	m_buttonSize = sf::Vector2f(300.0f, 32.0f);
 	m_buttonPos = sf::Vector2f(m_window->GetSize().x / 2.0f, m_window->GetSize().y / 2.0f - (BUTTON_COUNT * m_buttonSize.y / 2.0f));
 
-	std::string str[3];
+	std::string str[5];
 	str[0] = "Launch Game";
-	str[1] = "bar";
-	str[2] = "Exit";
+	str[1] = "Sprite Editor";
+	str[2] = "bar";
+	str[3] = "bas";
+	str[4] = "Exit";
 
 	for (size_t i = 0; i < BUTTON_COUNT; i++)
 	{
@@ -91,9 +93,16 @@ void State_DebugMenu::MouseClick(Kengine::EventDetails* eventDetails)
 				m_stateManager->Remove(GameState::DEBUG_MENU);
 				break;
 			case 1:
-				std::cout << "Do something for one" << std::endl;
+				m_stateManager->SwitchTo(GameState::SPRITE_EDITOR);
+				m_stateManager->Remove(GameState::DEBUG_MENU);
 				break;
 			case 2:
+				std::cout << "Do something for bar" << std::endl;
+				break;
+			case 3:
+				std::cout << "Do something for bas" << std::endl;
+				break;
+			case 4:
 				m_window->Close();
 				break;
 			default: 

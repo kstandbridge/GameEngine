@@ -5,6 +5,7 @@
 #include "State_Game.h"
 #include "State_Paused.h"
 #include "State_Inventory.h"
+#include "State_SpriteEditor.h"
 
 
 int main(int argc, char* argv[])
@@ -15,6 +16,7 @@ int main(int argc, char* argv[])
 	game.RegisterState<State_Game>(GameState::GAME);
 	game.RegisterState<State_Paused>(GameState::PAUSED);
 	game.RegisterState<State_Inventory>(GameState::INVENTORY);
+	game.RegisterState<State_SpriteEditor>(GameState::SPRITE_EDITOR);
 	game.Init("Platform Game", 800, 600, GameState::DEBUG_MENU);
 
 	while(game.IsRunning())
