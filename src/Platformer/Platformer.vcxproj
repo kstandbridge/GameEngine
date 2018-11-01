@@ -79,6 +79,7 @@
     <ClCompile Include="State_Game.cpp" />
     <ClCompile Include="State_Intro.cpp" />
     <ClCompile Include="State_Inventory.cpp" />
+    <ClCompile Include="State_MapEditor.cpp" />
     <ClCompile Include="State_Paused.cpp" />
     <ClCompile Include="State_SpriteEditor.cpp" />
   </ItemGroup>
@@ -88,6 +89,7 @@
     <ClInclude Include="State_Game.h" />
     <ClInclude Include="State_Intro.h" />
     <ClInclude Include="State_Inventory.h" />
+    <ClInclude Include="State_MapEditor.h" />
     <ClInclude Include="State_Paused.h" />
     <ClInclude Include="State_SpriteEditor.h" />
   </ItemGroup>

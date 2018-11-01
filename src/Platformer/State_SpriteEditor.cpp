@@ -4,6 +4,7 @@
 
 #include <iostream>
 #include "Engine/EventManager.h"
+#include "Engine/StateManager.h"
 
 void State_SpriteEditor::OnCreate(Kengine::EventManager<GameState>* eventManager)
 {
@@ -13,6 +14,7 @@ void State_SpriteEditor::OnCreate(Kengine::EventManager<GameState>* eventManager
 		m_window->GetSize().x / 2.0f, 
 		m_window->GetSize().y / 2.0f });
 
+	eventManager->AddCallback(GameState::SPRITE_EDITOR, "Key_Escape", &State_SpriteEditor::Close, this);
 	eventManager->AddCallback(GameState::SPRITE_EDITOR, "Player_MoveLeft", &State_SpriteEditor::MoveLeft, this);
 	eventManager->AddCallback(GameState::SPRITE_EDITOR, "Player_MoveRight", &State_SpriteEditor::MoveRight, this);
 	eventManager->AddCallback(GameState::SPRITE_EDITOR, "Player_Jump", &State_SpriteEditor::Jump, this);
@@ -22,6 +24,7 @@ void State_SpriteEditor::OnCreate(Kengine::EventManager<GameState>* eventManager
 void State_SpriteEditor::OnDestroy(Kengine::EventManager<GameState>* eventManager)
 {
 	std::cout << "SpriteEditor OnDestroy..." << std::endl;
+	eventManager->RemoveCallback(GameState::SPRITE_EDITOR, "Key_Escape");
 	eventManager->RemoveCallback(GameState::SPRITE_EDITOR, "Player_MoveLeft");
 	eventManager->RemoveCallback(GameState::SPRITE_EDITOR, "Player_MoveRight");
 	eventManager->RemoveCallback(GameState::SPRITE_EDITOR, "Player_Jump");
@@ -46,6 +49,12 @@ void State_SpriteEditor::Update(const sf::Time& time)
 void State_SpriteEditor::Draw()
 {
 	m_spriteSheet.Draw(m_window->GetRenderWindow());
+}
+
+void State_SpriteEditor::Close(Kengine::EventDetails* eventDetails)
+{
+	m_stateManager->SwitchTo(GameState::DEBUG_MENU);
+	m_stateManager->Remove(GameState::SPRITE_EDITOR);
 }
 
 void State_SpriteEditor::MoveLeft(Kengine::EventDetails* eventDetails)

@@ -11,13 +11,16 @@ void State_Game::OnCreate(Kengine::EventManager<GameState>* eventManager)
 	m_sprite.setTexture(*texture);
 	m_direction = sf::Vector2f(400.0f, 400.0f);
 	
+	eventManager->AddCallback(GameState::GAME, "Key_Escape", &State_Game::Close, this);
 	eventManager->AddCallback(GameState::GAME, "Game_Pause", &State_Game::Pause, this);
 	eventManager->AddCallback(GameState::GAME, "Game_Inventory", &State_Game::Bag, this);
+
 }
 
 void State_Game::OnDestroy(Kengine::EventManager<GameState>* eventManager)
 {
-	m_textureManager->RequireResource("Mushroom");
+	m_textureManager->ReleaseResource("Mushroom");
+	eventManager->RemoveCallback(GameState::GAME, "Key_Escape");
 	eventManager->RemoveCallback(GameState::GAME, "Game_Pause");
 	eventManager->RemoveCallback(GameState::GAME, "Game_Inventory");
 }
@@ -55,6 +58,11 @@ void State_Game::Update(const sf::Time& time)
 void State_Game::Draw()
 {
 	m_window->GetRenderWindow()->draw(m_sprite);
+}
+
+void State_Game::Close(Kengine::EventDetails* eventDetails)
+{
+	m_window->Close();
 }
 
 void State_Game::Pause(Kengine::EventDetails* eventDetails)

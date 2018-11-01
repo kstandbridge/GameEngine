@@ -1,23 +1,25 @@
 #pragma once
-#include "GameState.h"
 #include "Engine/BaseState.h"
-#include "Engine/EventManager.h"
 
+#include "GameState.h"
 
-class State_Game : public Kengine::BaseState<GameState>
+#include "Engine/Window.h"
+
+namespace Kengine {
+	struct EventDetails;
+}
+
+class State_MapEditor : public Kengine::BaseState<GameState>
 {
-	sf::Sprite m_sprite;
-	sf::Vector2u m_spriteSize;
-	sf::Vector2f m_direction;
 public:
-	State_Game(
+	State_MapEditor(
 		Kengine::FontManager* fontManager,
 		Kengine::TextureManager* textureManager,
 		Kengine::StateManager<GameState>* stateManager,
 		Kengine::Window<GameState>* window)
-		: BaseState<GameState>(fontManager, textureManager, stateManager, window)
+		: BaseState(fontManager, textureManager, stateManager, window)
 	{
-	};
+	}
 
 	void OnCreate(Kengine::EventManager<GameState>* eventManager) override;
 	void OnDestroy(Kengine::EventManager<GameState>* eventManager) override;
@@ -27,7 +29,5 @@ public:
 	void Draw() override;
 
 	void Close(Kengine::EventDetails* eventDetails);
-	void Pause(Kengine::EventDetails* eventDetails);
-	void Bag(Kengine::EventDetails* eventDetails);
 };
 

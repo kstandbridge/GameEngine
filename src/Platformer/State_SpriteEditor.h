@@ -31,6 +31,8 @@ public:
 	void Update(const sf::Time& time) override;
 	void Draw() override;
 
+	void Close(Kengine::EventDetails* eventDetails);
+
 	void MoveLeft(Kengine::EventDetails* eventDetails);
 	void MoveRight(Kengine::EventDetails* eventDetails);
 	void Attack(Kengine::EventDetails* eventDetails);
