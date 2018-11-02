@@ -75,6 +75,7 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClCompile Include="Main.cpp" />
+    <ClCompile Include="Map.cpp" />
     <ClCompile Include="State_DebugMenu.cpp" />
     <ClCompile Include="State_Game.cpp" />
     <ClCompile Include="State_Intro.cpp" />
@@ -85,6 +86,7 @@
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="GameState.h" />
+    <ClInclude Include="Map.h" />
     <ClInclude Include="State_DebugMenu.h" />
     <ClInclude Include="State_Game.h" />
     <ClInclude Include="State_Intro.h" />
@@ -96,16 +98,20 @@
   <ItemGroup>
     <None Include="Resources\fonts.cfg" />
     <None Include="Resources\keys.cfg" />
+    <None Include="Resources\Map1.map" />
     <None Include="Resources\SpriteSheets\Player.sheet" />
     <None Include="Resources\textures.cfg" />
+    <None Include="Resources\tiles.cfg" />
   </ItemGroup>
   <ItemGroup>
     <Font Include="Resources\arial.ttf" />
   </ItemGroup>
   <ItemGroup>
+    <Image Include="Resources\bg3.png" />
     <Image Include="Resources\intro.png" />
     <Image Include="Resources\Mushroom.png" />
     <Image Include="Resources\PlayerSheet.png" />
+    <Image Include="Resources\tilesheet.png" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

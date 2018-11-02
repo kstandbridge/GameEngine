@@ -39,6 +39,9 @@
     <ClCompile Include="State_MapEditor.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="Map.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="GameState.h">
@@ -65,12 +68,17 @@
     <ClInclude Include="State_MapEditor.h">
       <Filter>Header Files</Filter>
     </ClInclude>
+    <ClInclude Include="Map.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <None Include="Resources\keys.cfg" />
     <None Include="Resources\textures.cfg" />
     <None Include="Resources\fonts.cfg" />
     <None Include="Resources\SpriteSheets\Player.sheet" />
+    <None Include="Resources\Map1.map" />
+    <None Include="Resources\tiles.cfg" />
   </ItemGroup>
   <ItemGroup>
     <Font Include="Resources\arial.ttf" />
@@ -83,6 +91,12 @@
       <Filter>Resource Files</Filter>
     </Image>
     <Image Include="Resources\PlayerSheet.png">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="Resources\bg3.png">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="Resources\tilesheet.png">
       <Filter>Resource Files</Filter>
     </Image>
   </ItemGroup>
